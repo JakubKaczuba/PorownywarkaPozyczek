@@ -8,67 +8,70 @@ klasa pożyczki (POJO)
  */
 public class Loan {
 
-    private int requiredAge;
-    private String loanName;
-    private Bitmap loanLogo;
-    private Range<Integer> loanValueRange;
-    private Range<Integer> daysRange;
-    private int campaignCategoryId;
-    private boolean isFirstFreeLoan;
+    private int wiek; //requiredAge;
+    private String nazwa; //loanName;
+    //private Bitmap loanLogo;
+    private int kwota_min; //loanValueMin;
+    private int kwota_max; //loanValueMax;
+    private int DZIEN_MAX; //dayMax;
+    private int DZIEN_MIN; //dayMin;
+    private int id; //campaignCategoryId;
+    //private boolean isFirstLoanFree;
 
-    public int getRequiredAge() {
-        return requiredAge;
+
+    public int getWiek() {
+        return wiek;
     }
 
-    public void setRequiredAge(int requiredAge) {
-        this.requiredAge = requiredAge;
+    public void setWiek(int wiek) {
+        this.wiek = wiek;
     }
 
-    public String getLoanName() {
-        return loanName;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public void setLoanName(String loanName) {
-        this.loanName = loanName;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
-    public Bitmap getLoanLogo() {
-        return loanLogo;
+    public int getKwota_min() {
+        return kwota_min;
     }
 
-    public void setLoanLogo(Bitmap loanLogo) {
-        this.loanLogo = loanLogo;
+    public void setKwota_min(int kwota_min) {
+        this.kwota_min = kwota_min;
     }
 
-    public Range<Integer> getLoanValueRange() {
-        return loanValueRange;
+    public int getKwota_max() {
+        return kwota_max;
     }
 
-    public void setLoanValueRange(Range<Integer> loanValueRange) {
-        this.loanValueRange = loanValueRange;
+    public void setKwota_max(int kwota_max) {
+        this.kwota_max = kwota_max;
     }
 
-    public Range<Integer> getDaysRange() {
-        return daysRange;
+    public int getDZIEN_MAX() {
+        return DZIEN_MAX;
     }
 
-    public void setDaysRange(Range<Integer> daysRange) {
-        this.daysRange = daysRange;
+    public void setDZIEN_MAX(int DZIEN_MAX) {
+        this.DZIEN_MAX = DZIEN_MAX;
     }
 
-    public int getCampaignCategoryId() {
-        return campaignCategoryId;
+    public int getDZIEN_MIN() {
+        return DZIEN_MIN;
     }
 
-    public void setCampaignCategoryId(int campaignCategoryId) {
-        this.campaignCategoryId = campaignCategoryId;
+    public void setDZIEN_MIN(int DZIEN_MIN) {
+        this.DZIEN_MIN = DZIEN_MIN;
     }
 
-    public boolean isFirstFreeLoan() {
-        return isFirstFreeLoan;
+    public int getId() {
+        return id;
     }
 
-    public void setFirstFreeLoan(boolean firstFreeLoan) {
-        isFirstFreeLoan = firstFreeLoan;
+    public void setId(int id) {
+        this.id = id;
     }
 }
