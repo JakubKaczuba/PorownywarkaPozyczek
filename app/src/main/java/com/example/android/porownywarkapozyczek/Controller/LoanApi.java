@@ -44,6 +44,7 @@ public class LoanApi implements Callback<List<Loan>> {
     @Override
     public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
         listOfLoan = response.body();
+
     }
 
     @Override
