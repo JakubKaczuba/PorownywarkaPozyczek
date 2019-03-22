@@ -15,9 +15,17 @@ public class Loan {
     private int kwota_max; //loanValueMax;
     private int DZIEN_MAX; //dayMax;
     private int DZIEN_MIN; //dayMin;
-    private int id; //campaignCategoryId;
-    //private boolean isFirstLoanFree;
+    private int campaignCategoryId; //campaignCategoryId;
+    private boolean isFirstLoanFree;
+    private Bitmap logoBitmp;
 
+    public Bitmap getLogoBitmp() {
+        return logoBitmp;
+    }
+
+    public void setLogoBitmp(Bitmap logoBitmp) {
+        this.logoBitmp = logoBitmp;
+    }
 
     public int getWiek() {
         return wiek;
@@ -67,11 +75,19 @@ public class Loan {
         this.DZIEN_MIN = DZIEN_MIN;
     }
 
-    public int getId() {
-        return id;
+    public int getcampaignCategoryId() {
+        return campaignCategoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setcampaignCategoryId(int id) {
+        this.campaignCategoryId = id;
+    }
+
+    public boolean getisFirstLoanFree() {
+        return isFirstLoanFree;
+    }
+
+    public void setFirstLoanFree(boolean firstLoanFree) {
+        isFirstLoanFree = firstLoanFree;
     }
 }

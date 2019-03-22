@@ -9,7 +9,7 @@
     android:background="@android:color/background_light">
 
     <ImageView
-        android:id="@+id/loanLogoView"
+        android:id="@+id/ivLoanLogoView"
         android:layout_width="199dp"
         android:layout_height="104dp"
         android:layout_marginStart="16dp"
@@ -22,13 +22,16 @@
 
     <TextView
         android:id="@+id/tvLoanValueRange"
-        android:layout_width="107dp"
+        android:layout_width="135dp"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="LoanVelueRange"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/loanLogoView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivLoanLogoView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -37,33 +40,39 @@
         android:layout_height="32dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="LoanDays"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/loanLogoView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivLoanLogoView"
         app:layout_constraintTop_toBottomOf="@+id/tvLoanValueRange" />
 
     <TextView
         android:id="@+id/tvIsFirstLoanFree"
-        android:layout_width="107dp"
-        android:layout_height="41dp"
+        android:layout_width="135dp"
+        android:layout_height="51dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Tak"
         android:textColor="@android:color/holo_green_dark"
-        app:layout_constraintStart_toEndOf="@+id/loanLogoView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivLoanLogoView"
         app:layout_constraintTop_toBottomOf="@+id/tvLoanDays" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="146dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="40dp"
+        android:id="@+id/buttonSubmit"
+        android:layout_width="155dp"
+        android:layout_height="29dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@android:color/background_light"
+        android:background="@color/colorAccent"
         android:text="Button"
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/loanLogoView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIsFirstLoanFree" />
 </android.support.constraint.ConstraintLayout>

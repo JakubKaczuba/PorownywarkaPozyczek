@@ -21,6 +21,7 @@ public class LoanApi implements Callback<List<Loan>> {
     private Gson gson;
     private Retrofit retrofit;
     private List<Loan> listOfLoan;
+    private MyWebService api;
 
     public LoanApi() {
         listOfLoan = new ArrayList<Loan>();
@@ -32,9 +33,7 @@ public class LoanApi implements Callback<List<Loan>> {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        MyWebService api = retrofit.create(MyWebService.class);
-        Call<List<Loan>> call = api.getData();
-        call.enqueue(this);
+        api = retrofit.create(MyWebService.class);
     }
 
     public List<Loan> getListOfLoan() {
@@ -43,6 +42,7 @@ public class LoanApi implements Callback<List<Loan>> {
 
     @Override
     public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
+        System.out.println(response.body());
         listOfLoan = response.body();
 
     }
@@ -50,5 +50,11 @@ public class LoanApi implements Callback<List<Loan>> {
     @Override
     public void onFailure(Call<List<Loan>> call, Throwable t) {
         System.out.println("ERROR");
+    }
+
+    public void test() {
+        Call<List<Loan>> call = api.getData();
+        call.enqueue(this);
+        System.out.println("działa!");
     }
 }
