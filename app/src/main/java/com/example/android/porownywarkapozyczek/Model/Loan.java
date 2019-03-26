@@ -18,6 +18,25 @@ public class Loan {
     private int campaignCategoryId; //campaignCategoryId;
     private boolean isFirstLoanFree;
     private Bitmap logoBitmp;
+    private String affilatelink;
+    private String logourl;
+
+
+    public String getAffilatelink() {
+        return affilatelink;
+    }
+
+    public void setAffilatelink(String affilatelink) {
+        this.affilatelink = affilatelink;
+    }
+
+    public String getLogourl() {
+        return logourl;
+    }
+
+    public void setLogourl(String logourl) {
+        this.logourl = logourl;
+    }
 
     public Bitmap getLogoBitmp() {
         return logoBitmp;

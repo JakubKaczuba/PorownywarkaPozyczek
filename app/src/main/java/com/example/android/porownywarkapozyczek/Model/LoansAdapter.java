@@ -78,15 +78,9 @@ public class LoansAdapter extends BaseAdapter {
         {
             holder = (ViewHolder) convertView.getTag();
         }
-        int corePoolSize = 60;
-        int maximumPoolSize = 80;
-        int keepAliveTime = 10;
-
-        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(maximumPoolSize);
-        Executor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS, workQueue);
-        new DownloadImageTask1(ivLogo).execute("https://83437-254797-raikfcquaxqncofqfm.stackpathdns.com/10944-home_default/obrazek-obrazki-de-10-11.jpg");
-
-        new DownloadImageTask1(ivLogo).executeOnExecutor(threadPoolExecutor, "https://83437-254797-raikfcquaxqncofqfm.stackpathdns.com/10944-home_default/obrazek-obrazki-de-10-11.jpg");
+        if(filteredList.get(position).getLogoBitmp() != null){
+            holder.ivLogo.setImageBitmap(filteredList.get(position).getLogoBitmp());
+        }
         holder.tvLoanValueRange.setText("od " + filteredList.get(position).getKwota_min() + " do " +
                 filteredList.get(position).getKwota_max());
         holder.tvLoanDays.setText("od " + filteredList.get(position).getDZIEN_MIN() + " do " +
@@ -115,54 +109,5 @@ public class LoansAdapter extends BaseAdapter {
         TextView tvIsFirstLoanFree;
         Button buttonSubmit;
         ImageView ivLogo;
-    }
-}
-class DownloadImageTask1 extends AsyncTask<String, Void, Bitmap> {
-    ImageView bmImage;
-    static Integer licznik = 1;
-
-    public DownloadImageTask1(ImageView bmImage) {
-        this.bmImage = bmImage;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        // TODO Auto-generated method stub
-        super.onPreExecute();
-
-    }
-
-    protected Bitmap doInBackground(String... urls) {
-        String urldisplay = urls[0];
-        System.out.println(urldisplay);
-        Bitmap mIcon11 = null;
-        try {
-            InputStream in = new java.net.URL(urldisplay).openStream();
-            mIcon11 = BitmapFactory.decodeStream(in);
-
-        } catch (Exception e) {
-            Log.e("Error", e.getMessage());
-            e.printStackTrace();
-        }
-        return mIcon11;
-    }
-
-
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
-     */
-    @SuppressWarnings("unused")
-    @Override
-    protected void onPostExecute(Bitmap result) {
-        super.onPostExecute(result);
-
-
-        System.out.println("DUUUUPA");
-        //MainActivity main = new MainActivity();
-
-
     }
 }

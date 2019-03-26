@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.android.porownywarkapozyczek.Controller.LoanApi;
 import com.example.android.porownywarkapozyczek.Model.Loan;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
     private List<Loan> listOfLoan;
     private MyWebService api;
     private LoansAdapter loansAdapter;
+    private Spinner spLoanChooser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,13 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
 
         lvListOfLOan = (ListView) findViewById(R.id.lvListOfLoan);
         listOfLoan = new ArrayList<Loan>();
+        spLoanChooser = (Spinner) findViewById(R.id.spLoanChooser);
+        List<String> list = new ArrayList<String>();
+        list.add("Pożyczka krótkoterminowa");
+        list.add("Pożyczka długoterminowa");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -58,13 +67,6 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
 
         Call<List<Loan>> call = api.getData();
         call.enqueue(this);
-
-
-
-
-
-
-
 
         /*
 
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         listOfLoan = response.body();
         for(int i=0; i<listOfLoan.size(); i++) {
             System.out.println(listOfLoan.get(i).getNazwa());
+            new DownloadImageTask1(i).execute("https://cdn.shoplo.com/1785/products/th1024/aaaf/137-piesek.jpg");
         }
 
         loansAdapter = new LoansAdapter(this, listOfLoan, 0);
@@ -102,6 +105,61 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         System.out.println("ERROR");
     }
 
+    class DownloadImageTask1 extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+         int licznik;
+
+        public DownloadImageTask1(int licznik) {
+            this.licznik = licznik;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            System.out.println(urldisplay);
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+         */
+        @SuppressWarnings("unused")
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            listOfLoan.get(licznik).setLogoBitmp(result);
+
+            System.out.println(listOfLoan.size());
+
+            //MainActivity main = new MainActivity();
+        if(licznik == listOfLoan.size()-1){
+            loansAdapter = new LoansAdapter(MainActivity.this, listOfLoan, 0);
+            lvListOfLOan.setAdapter(loansAdapter);
+            lvListOfLOan.invalidate();
+        }
+
+        }
+    }
 
 }
 

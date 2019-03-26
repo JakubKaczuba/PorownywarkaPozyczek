@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PorownywarkaPozyczek</string>
+
+    <string-array name="loan_arrays">
+        <item>Pożyczka krótkoterminowa</item>
+        <item>Pożyczka długoterminowa</item>
+
+    </string-array>
 </resources>
