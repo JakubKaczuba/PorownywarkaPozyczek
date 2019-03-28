@@ -78,23 +78,6 @@
         app:autoSizeMaxTextSize="100sp"
         />
 
-    <Button
-        android:id="@+id/buttonSubmit"
-        android:layout_width="155dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
-        android:text="Złóż wniosek"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvIsFirstLoanFree"
-        app:autoSizeMinTextSize="12sp"
-        app:autoSizeMaxTextSize="100sp"
-        />
-
     <TextView
         android:id="@+id/tvAge"
         android:layout_width="160dp"
@@ -112,4 +95,14 @@
         app:autoSizeMinTextSize="12sp"
         app:autoSizeMaxTextSize="100sp"
         />
+
+    <ImageButton
+        android:id="@+id/imageButtonSubmit"
+        android:layout_width="165dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIsFirstLoanFree"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
 </android.support.constraint.ConstraintLayout>

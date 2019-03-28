@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        submitButton = (Button) findViewById(R.id.buttonSubmit);
         lvListOfLOan = (ListView) findViewById(R.id.lvListOfLoan);
         listOfLoan = new ArrayList<Loan>();
         spLoanChooser = (Spinner) findViewById(R.id.spLoanChooser);
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         adapter = new ArrayAdapter<Loan>(this, R.layout.row_of_loan, listOfLoan);
 
         */
-        
+
     }
 
     @Override

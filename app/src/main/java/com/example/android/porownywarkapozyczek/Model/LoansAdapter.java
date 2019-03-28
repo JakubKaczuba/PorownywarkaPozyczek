@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Filter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class LoansAdapter extends BaseAdapter {
     private TextView tvLoanValueRange;
     private TextView tvLoanDays;
     private TextView tvIsFirstLoanFree;
-    private Button buttonSubmit;
+    private ImageButton imageButtonSubmit;
     private ImageView ivLogo;
     private int selectedCampaignId;
     private ViewHolder holder;
@@ -80,7 +81,7 @@ public class LoansAdapter extends BaseAdapter {
             holder.tvIsFirstLoanFree = (TextView) convertView.findViewById(R.id.tvIsFirstLoanFree);
             holder.ivLogo = (ImageView) convertView.findViewById(R.id.ivLoanLogoView);
             holder.tvAge = (TextView) convertView.findViewById(R.id.tvAge);
-            holder.buttonSubmit = (Button) convertView.findViewById(R.id.buttonSubmit);
+            holder.imageButtonSubmit = (ImageButton) convertView.findViewById(R.id.imageButtonSubmit);
             convertView.setTag(holder);
 
         }
@@ -112,7 +113,7 @@ public class LoansAdapter extends BaseAdapter {
 
         }
 
-        holder.buttonSubmit.setOnClickListener(new View.OnClickListener() {
+        holder.imageButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = "https://www.google.com";//filteredList.get(position).getAffilatelink();
@@ -132,7 +133,7 @@ public class LoansAdapter extends BaseAdapter {
         TextView tvLoanDays;
         TextView tvIsFirstLoanFree;
         TextView tvAge;
-        Button buttonSubmit;
+        ImageButton imageButtonSubmit;
         ImageView ivLogo;
     }
 
