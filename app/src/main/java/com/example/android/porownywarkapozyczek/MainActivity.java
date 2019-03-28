@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
     private LoansAdapter loansAdapter;
     private Spinner spLoanChooser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +71,21 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         Call<List<Loan>> call = api.getData();
         call.enqueue(this);
 
+        spLoanChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                lvListOfLOan.setAdapter(new LoansAdapter(getApplicationContext(), listOfLoan,  position));
+                LoansAdapter adapter = (LoansAdapter) lvListOfLOan.getAdapter();
+                //adapter.getFilter().filter(String.valueOf(sbDistance.getProgress()));
+                adapter.getFilter().filter(String.valueOf(position));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         /*
 
         loanApi = new LoanApi();
@@ -103,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
     @Override
     public void onFailure(Call<List<Loan>> call, Throwable t) {
         System.out.println("ERROR");
+        System.out.println(t.getMessage());
     }
 
     class DownloadImageTask1 extends AsyncTask<String, Void, Bitmap> {

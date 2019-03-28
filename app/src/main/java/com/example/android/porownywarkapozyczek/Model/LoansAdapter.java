@@ -10,12 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.porownywarkapozyczek.R;
 
+import org.w3c.dom.Text;
+
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -35,6 +39,7 @@ public class LoansAdapter extends BaseAdapter {
     private ImageView ivLogo;
     private int selectedCampaignId;
     private ViewHolder holder;
+    private ItemFilter mFilter = new ItemFilter();
 
 
     public LoansAdapter(Context context, List<Loan> listOfLoan, int selectedCampaignId) {
@@ -72,6 +77,7 @@ public class LoansAdapter extends BaseAdapter {
             holder.tvLoanDays = (TextView) convertView.findViewById(R.id.tvLoanDays);
             holder.tvIsFirstLoanFree = (TextView) convertView.findViewById(R.id.tvIsFirstLoanFree);
             holder.ivLogo = (ImageView) convertView.findViewById(R.id.ivLoanLogoView);
+            holder.tvAge = (TextView) convertView.findViewById(R.id.tvAge);
             convertView.setTag(holder);
         }
         else
@@ -82,9 +88,10 @@ public class LoansAdapter extends BaseAdapter {
             holder.ivLogo.setImageBitmap(filteredList.get(position).getLogoBitmp());
         }
         holder.tvLoanValueRange.setText("od " + filteredList.get(position).getKwota_min() + " do " +
-                filteredList.get(position).getKwota_max());
+                filteredList.get(position).getKwota_max() + " zł");
         holder.tvLoanDays.setText("od " + filteredList.get(position).getDZIEN_MIN() + " do " +
-                filteredList.get(position).getDZIEN_MAX());
+                filteredList.get(position).getDZIEN_MAX() + " dni");
+        holder.tvAge.setText("Wiek:" + " " + filteredList.get(position).getWiek());
 
         System.out.println("GET VIEW DZIALA");
         if (selectedCampaignId == 0){
@@ -102,12 +109,53 @@ public class LoansAdapter extends BaseAdapter {
     return convertView;
     }
 
-
+    public Filter getFilter() {
+        return mFilter;
+    }
     static class ViewHolder{
         TextView tvLoanValueRange;
         TextView tvLoanDays;
         TextView tvIsFirstLoanFree;
+        TextView tvAge;
         Button buttonSubmit;
         ImageView ivLogo;
+    }
+
+    private class ItemFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+
+            FilterResults results = new FilterResults();
+
+            final List<Loan> listofPlaces = listOfLoan;
+
+            int count = listofPlaces.size();
+
+            final ArrayList<Loan> nList = new ArrayList<Loan>(count);
+
+            boolean getErroredwithOpenningHours = false;
+            for (int i = 0; i < count; i++) {
+
+                    if (listofPlaces.get(i).getcampaignCategoryId() == selectedCampaignId) {
+                        nList.add(listofPlaces.get(i));
+
+
+                    }
+
+
+            }
+            results.values = nList;
+            results.count = nList.size();
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults results) {
+            filteredList = (ArrayList<Loan>) results.values;
+            notifyDataSetChanged();
+
+        }
     }
 }
