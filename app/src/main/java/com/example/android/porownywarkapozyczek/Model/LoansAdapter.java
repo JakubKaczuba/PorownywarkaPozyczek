@@ -1,8 +1,10 @@
 package com.example.android.porownywarkapozyczek.Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,7 +67,7 @@ public class LoansAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
             LayoutInflater inflater =
@@ -78,12 +80,15 @@ public class LoansAdapter extends BaseAdapter {
             holder.tvIsFirstLoanFree = (TextView) convertView.findViewById(R.id.tvIsFirstLoanFree);
             holder.ivLogo = (ImageView) convertView.findViewById(R.id.ivLoanLogoView);
             holder.tvAge = (TextView) convertView.findViewById(R.id.tvAge);
+            holder.buttonSubmit = (Button) convertView.findViewById(R.id.buttonSubmit);
             convertView.setTag(holder);
+
         }
         else
         {
             holder = (ViewHolder) convertView.getTag();
         }
+
         if(filteredList.get(position).getLogoBitmp() != null){
             holder.ivLogo.setImageBitmap(filteredList.get(position).getLogoBitmp());
         }
@@ -106,6 +111,16 @@ public class LoansAdapter extends BaseAdapter {
             }
 
         }
+
+        holder.buttonSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://www.google.com";//filteredList.get(position).getAffilatelink();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                context.startActivity(intent);
+            }
+        });
     return convertView;
     }
 

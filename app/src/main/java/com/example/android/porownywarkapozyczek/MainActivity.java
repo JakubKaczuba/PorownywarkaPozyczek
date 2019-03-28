@@ -1,7 +1,10 @@
 package com.example.android.porownywarkapozyczek;
 
+import android.content.Intent;
+import android.drm.DrmStore;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
     private MyWebService api;
     private LoansAdapter loansAdapter;
     private Spinner spLoanChooser;
+    private Button submitButton;
 
 
     @Override
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        submitButton = (Button) findViewById(R.id.buttonSubmit);
         lvListOfLOan = (ListView) findViewById(R.id.lvListOfLoan);
         listOfLoan = new ArrayList<Loan>();
         spLoanChooser = (Spinner) findViewById(R.id.spLoanChooser);
@@ -101,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         adapter = new ArrayAdapter<Loan>(this, R.layout.row_of_loan, listOfLoan);
 
         */
+        
     }
 
     @Override
@@ -123,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         System.out.println("ERROR");
         System.out.println(t.getMessage());
     }
+
+
 
     class DownloadImageTask1 extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
