@@ -16,12 +16,19 @@ public class Loan {
     private int DZIEN_MAX; //dayMax;
     private int DZIEN_MIN; //dayMin;
     private int campaignCategoryId; //campaignCategoryId;
-    private boolean isFirstLoanFree;
+    private int isFirstLoanFree;
     private Bitmap logoBitmp;
     private String affilatelink;
     private String logourl;
-    private int valueForRegularCustomer;
+    private int KWOTA_MAX_STALYCH;
 
+    public int getKWOTA_MAX_STALYCH() {
+        return KWOTA_MAX_STALYCH;
+    }
+
+    public void setKWOTA_MAX_STALYCH(int KWOTA_MAX_STALYCH) {
+        this.KWOTA_MAX_STALYCH = KWOTA_MAX_STALYCH;
+    }
 
     public String getAffilatelink() {
         return affilatelink;
@@ -103,11 +110,11 @@ public class Loan {
         this.campaignCategoryId = id;
     }
 
-    public boolean getisFirstLoanFree() {
+    public int getisFirstLoanFree() {
         return isFirstLoanFree;
     }
 
-    public void setFirstLoanFree(boolean firstLoanFree) {
+    public void setFirstLoanFree(int firstLoanFree) {
         isFirstLoanFree = firstLoanFree;
     }
 }

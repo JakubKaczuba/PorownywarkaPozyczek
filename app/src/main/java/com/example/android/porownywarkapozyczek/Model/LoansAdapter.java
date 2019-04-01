@@ -81,7 +81,6 @@ public class LoansAdapter extends BaseAdapter {
             holder.tvLoanDays = (TextView) convertView.findViewById(R.id.tvLoanDays);
             holder.tvIsFirstLoanFree = (TextView) convertView.findViewById(R.id.tvIsFirstLoanFree);
             holder.ivLogo = (ImageView) convertView.findViewById(R.id.ivLoanLogoView);
-            holder.tvAge = (TextView) convertView.findViewById(R.id.tvAge);
             holder.imageButtonSubmit = (ImageButton) convertView.findViewById(R.id.imageButtonSubmit);
             holder.tvValueForRegularCustomer = (TextView) convertView.findViewById(R.id.tvRegularCustomerValue);
             convertView.setTag(holder);
@@ -99,26 +98,36 @@ public class LoansAdapter extends BaseAdapter {
                 filteredList.get(position).getKwota_max() + " zł");
         holder.tvLoanDays.setText("od " + filteredList.get(position).getDZIEN_MIN() + " do " +
                 filteredList.get(position).getDZIEN_MAX() + " dni");
-        holder.tvAge.setText("Wiek:" + " " + filteredList.get(position).getWiek());
+        //holder.tvAge.setText("Wiek:" + " " + filteredList.get(position).getWiek());
 
         System.out.println("GET VIEW DZIALA");
         if (selectedCampaignId == 0){
+            holder.tvIsFirstLoanFree.setVisibility(View.VISIBLE);
             if(filteredList.get(position).getcampaignCategoryId() == 0){
-               if(filteredList.get(position).getisFirstLoanFree()) {
-                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa: TAK");
+               if(filteredList.get(position).getisFirstLoanFree() == 1) {
+                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa: Tak");
                }
                else
                {
-                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa: NIE");
+                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa: Nie");
                }
             }
 
+        }else{
+            holder.tvIsFirstLoanFree.setVisibility(View.GONE);
+        }
+        if(filteredList.get(position).getKWOTA_MAX_STALYCH() > filteredList.get(position).getKwota_max()){
+            holder.tvValueForRegularCustomer.setVisibility(View.VISIBLE);
+            holder.tvValueForRegularCustomer.setText("Dla stałych klientów:" + " " + filteredList.get(position).getKWOTA_MAX_STALYCH() + " zł");
+        }
+        else{
+            holder.tvValueForRegularCustomer.setVisibility(View.GONE);
         }
 
         holder.imageButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.google.com";//filteredList.get(position).getAffilatelink();
+                String url = filteredList.get(position).getAffilatelink();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 context.startActivity(intent);
