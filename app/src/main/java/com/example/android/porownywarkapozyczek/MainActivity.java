@@ -79,10 +79,11 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         spLoanChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                lvListOfLOan.setAdapter(new LoansAdapter(getApplicationContext(), listOfLoan,  position));
+                lvListOfLOan.setAdapter(new LoansAdapter(MainActivity.this, listOfLoan,  position));
                 LoansAdapter adapter = (LoansAdapter) lvListOfLOan.getAdapter();
                 //adapter.getFilter().filter(String.valueOf(sbDistance.getProgress()));
                 adapter.getFilter().filter(String.valueOf(position));
+                lvListOfLOan.invalidate();
 
             }
 

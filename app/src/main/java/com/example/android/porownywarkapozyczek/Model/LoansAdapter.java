@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -105,11 +106,15 @@ public class LoansAdapter extends BaseAdapter {
             holder.tvIsFirstLoanFree.setVisibility(View.VISIBLE);
             if(filteredList.get(position).getcampaignCategoryId() == 0){
                if(filteredList.get(position).getisFirstLoanFree() == 1) {
-                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa: Tak");
+                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa:");
+                   holder.tvIsFirstLoanFree.setTextColor(0xFF407D2F);
+                   holder.tvIsFirstLoanFree.setText(holder.tvIsFirstLoanFree.getText() +  "  Tak");
                }
                else
                {
-                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa: Nie");
+                   holder.tvIsFirstLoanFree.setText("Pierwsza darmowa:");
+                   holder.tvIsFirstLoanFree.setTextColor(Color.RED);
+                   holder.tvIsFirstLoanFree.setText(holder.tvIsFirstLoanFree.getText() +  "  Nie");
                }
             }
 
