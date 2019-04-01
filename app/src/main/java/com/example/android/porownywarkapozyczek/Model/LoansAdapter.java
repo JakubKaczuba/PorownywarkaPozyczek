@@ -38,6 +38,7 @@ public class LoansAdapter extends BaseAdapter {
     private TextView tvLoanValueRange;
     private TextView tvLoanDays;
     private TextView tvIsFirstLoanFree;
+    private TextView tvValueForRegularCustomer;
     private ImageButton imageButtonSubmit;
     private ImageView ivLogo;
     private int selectedCampaignId;
@@ -82,6 +83,7 @@ public class LoansAdapter extends BaseAdapter {
             holder.ivLogo = (ImageView) convertView.findViewById(R.id.ivLoanLogoView);
             holder.tvAge = (TextView) convertView.findViewById(R.id.tvAge);
             holder.imageButtonSubmit = (ImageButton) convertView.findViewById(R.id.imageButtonSubmit);
+            holder.tvValueForRegularCustomer = (TextView) convertView.findViewById(R.id.tvRegularCustomerValue);
             convertView.setTag(holder);
 
         }
@@ -133,6 +135,7 @@ public class LoansAdapter extends BaseAdapter {
         TextView tvLoanDays;
         TextView tvIsFirstLoanFree;
         TextView tvAge;
+        TextView tvValueForRegularCustomer;
         ImageButton imageButtonSubmit;
         ImageView ivLogo;
     }

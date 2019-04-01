@@ -20,6 +20,7 @@ public class Loan {
     private Bitmap logoBitmp;
     private String affilatelink;
     private String logourl;
+    private int valueForRegularCustomer;
 
 
     public String getAffilatelink() {
