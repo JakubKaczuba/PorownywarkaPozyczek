@@ -11,7 +11,7 @@
     <ListView
         android:id="@+id/lvListOfLoan"
         android:layout_width="396dp"
-        android:layout_height="465dp"
+        android:layout_height="508dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -56,6 +56,7 @@
         android:text="Wszystkie dane zawarte w aplikacji  mają charakter informacyjny, wydawca aplikacji nie jest w żaden sposób powiązany z firmami przedstawionymi w aplikacji. "
         android:textColor="@android:color/background_light"
         android:textSize="9sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
