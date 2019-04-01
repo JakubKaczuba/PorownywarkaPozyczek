@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Loa
         listOfLoan = response.body();
         for(int i=0; i<listOfLoan.size(); i++) {
             System.out.println(listOfLoan.get(i).getNazwa());
-            new DownloadImageTask1(i).execute("https://cdn.shoplo.com/1785/products/th1024/aaaf/137-piesek.jpg");
+            new DownloadImageTask1(i).execute(listOfLoan.get(i).getLogourl());
         }
 
         loansAdapter = new LoansAdapter(this, listOfLoan, 0);

@@ -116,7 +116,7 @@ public class LoansAdapter extends BaseAdapter {
         holder.imageButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.google.com";//filteredList.get(position).getAffilatelink();
+                String url = filteredList.get(position).getAffilatelink();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 context.startActivity(intent);
